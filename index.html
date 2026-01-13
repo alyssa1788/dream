@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa888</title>
+<style>
+        /* 1. 全域與平滑捲動 */
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Helvetica Neue", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+        body { line-height: 1.6; color: #333; background-color: #fff; }
+        
+        /* 2. 導覽列 */
+        nav { 
+            background: rgba(255, 255, 255, 0.98); 
+            padding: 1.2rem 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05); 
+            z-index: 1000; 
+        }
+        
+        .logo a { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: #1a1a1a; 
+            letter-spacing: 1.5px; 
+            text-decoration: none; 
+            transition: 0.3s;
+        }
+        .logo a:hover { color: #007bff; }
+        
+        .nav-links a { 
+            margin-left: 25px; 
+            text-decoration: none; 
+            color: #555; 
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #007bff; }
+        
+        /* 3. 英雄區 (Hero Section) */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 20px; 
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: #1a1a1a; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 600px; color: #555; }
+        .btn { background: #1a1a1a; color: #fff; padding: 0.9rem 2.5rem; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; display: inline-block; }
+        .btn:hover { background: #444; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* 4. 服務區域 (Services) */
+        .section { padding: 100px 10%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        
+        /* 卡片設計更新 */
+        .card { 
+            background: #fff; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: 0.3s; 
+            border: 1px solid #eee; 
+            overflow: hidden; /* 確保圖片不超出圓角 */
+            text-align: left;
+        }
+        .card a { text-decoration: none; color: inherit; display: block; }
+        
+        /* 卡片圖片樣式 */
+        .card-image {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        /* 卡片文字內容樣式 */
+        .card-content { padding: 30px; }
+        .card h3 { margin-bottom: 10px; font-size: 1.4rem; color: #1a1a1a; transition: 0.3s; }
+        .card p { color: #666; font-size: 0.95rem; margin-bottom: 15px; }
+        
+        .more-link { font-size: 0.9rem; font-weight: bold; color: #007bff; }
+
+        /* 懸停效果 */
+        .card:hover { transform: translateY(-10px); border-color: #007bff; }
+        .card:hover .card-image img { transform: scale(1.1); }
+        .card:hover h3 { color: #007bff; }
+
+        /* 5. 頁腳 (Footer) */
+        footer { text-align: center; padding: 60px; background: #1a1a1a; color: #999; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <nav>
+        <div class="logo">
+            <a href="#top">Alyssa</a>
+        </div>
+        <div class="nav-links">
+            <a href="#services">服務</a>
+            <a href="#contact">聯絡</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>與Alyssa來個美麗的約會吧</h1>
+        <p>讓你每個夜晚有個不一樣的難忘體驗。</p>
+        <a href="#services" class="btn">立即預約</a>
+    </section>
+
+    <section id="services" class="section">
+        <h2>我的服務</h2>
+            <div class="card">
+                <a href="brand1.html">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="品牌視覺設計">
+                    </div>
+                    <div class="card-content">
+                        <h3>暖暖</h3>
+                        <p>寒冷的天氣南方女孩給你不一樣的溫暖。</p>
+                        <span class="more-link">瞭解更多 &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            
+            <div class="card">
+                <a href="brand2.html">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="嗨嗨">
+                    </div>
+                    <div class="card-content">
+                        <h3>嗨嗨</h3>
+                        <p>寒冷的天氣南方女孩給你不一樣的溫暖。</p>
+                        <span class="more-link">瞭解更多 &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="brand3.html">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="雪雪">
+                    </div>
+                    <div class="card-content">
+                        <h3>雪雪</h3>
+                        <p>寒冷的天氣南方女孩給你不一樣的溫暖。</p>
+                        <span class="more-link">瞭解更多 &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="brand4.html">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="品牌視覺設計">
+                    </div>
+                    <div class="card-content">
+                        <h3>米娜</h3>
+                        <p>寒冷的天氣南方女孩給你不一樣的溫暖。</p>
+                        <span class="more-link">瞭解更多 &rarr;</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>敬請期待</h3>
+                <p>等待是為了下個美好的晚上有更好的體驗。</p>         
+            </div>     
+
+            <div class="card">
+                <h3>敬請期待</h3>
+                <p>等待是為了下個美好的晚上有更好的體驗。</p>         
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p style="margin-bottom: 15px; color: #fff;">準備好與 Alyssa 有個難忘的約會了嗎？</p>
+        <p>line: contact@alyssa.com</p>
+        <p>WeChat: contact@alyssa.com</p>
+        <p>Twiter: contact@alyssa.com</p>
+        <p>Telegram: contact@alyssa.com</p>
+        <br>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Helvetica Neue", "PingFang TC", sans-serif; }
+        body { background-color: #fff; color: #1a1a1a; line-height: 1.6; }
+        
+        nav { padding: 1.5rem 8%; display: flex; align-items: center; border-bottom: 1px solid #eee; }
+        .back-link { text-decoration: none; color: #666; font-size: 0.9rem; transition: 0.3s; }
+        .back-link:hover { color: #000; }
+
+        header { padding: 80px 8% 40px; }
+        header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        header p { color: #666; max-width: 600px; }
+
+        /* 作品集網格 */
+        .portfolio-grid { 
+            padding: 0 8% 100px; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+        
+        .work-item { 
+            position: relative; 
+            overflow: hidden; 
+            background: #f5f5f5; 
+            aspect-ratio: 4/3; 
+            cursor: pointer; /* 滑鼠變成手指圖示 */
+        }
+        
+        .work-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .work-info { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            padding: 30px; 
+            background: linear-gradient(transparent, rgba(0,0,0,0.7)); 
+            color: #fff; 
+            opacity: 0; 
+            transition: 0.4s;
+        }
+
+        .work-item:hover img { transform: scale(1.05); }
+        .work-item:hover .work-info { opacity: 1; }
+
+        /* 燈箱彈窗 (Lightbox) 樣式 */
+        .lightbox {
+            display: none; /* 預設隱藏 */
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer { text-align: center; padding: 60px; border-top: 1px solid #eee; color: #999; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← 回到主頁</a>
+    </nav>
+
+    <header>
+        <h1>暖暖</h1>
+        <p>【東南亞妹】</p>
+        <p>💰30分1S =2200</p>
+        <p>💰50分1S =2800</p>
+        <p>💰60分2S =3000</p>
+        <p>💰90分2S =3600</p>        
+        <p>身體密碼 - 158/42/真(D)奶</p>
+        <p>100%本人照實拍，又色又聽話配合度超高服務一流保證腿軟</p>
+        <p>服務項目 - </p>
+        <p>無套吹 共浴 小親親 舌吻視感覺 品鮑 69 按摩 奶泡 舔蛋 毒龍 </p>
+        <p>免費套裝 - 性感睡衣、丁字褲</p>
+        <p>加值服務 - 口爆+500 不露臉攝影+1000</p>
+    </header>
+
+    <section class="portfolio-grid">
+        <div class="work-item" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?auto=format&fit=crop&w=1200&q=80" alt="現代咖啡品牌識別">
+            <div class="work-info">
+                <h3>現代咖啡品牌識別</h3>
+            </div>
+        </div>
+
+        <div class="work-item" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&w=1200&q=80" alt="科技初創企業包裝">
+            <div class="work-info">
+                <h3>科技初創企業包裝</h3>
+            </div>
+        </div>
+
+        <div class="work-item" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80" alt="高端護膚品形象">
+            <div class="work-info">
+                <h3>高端護膚品形象</h3>
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img" src="" alt="大圖預覽">
+    </div>
+
+    <footer>
+        <p style="margin-bottom: 15px; color: #040000;">準備好與 Alyssa 有個難忘的約會了嗎？</p>
+        <p>line: contact@alyssa.com</p>
+        <p>WeChat: contact@alyssa.com</p>
+        <p>Twiter: contact@alyssa.com</p>
+        <p>Telegram: contact@alyssa.com</p>
+        <br>
+    </footer>
+
+    <script>
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            // 防止背景滾動
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            // 恢復背景滾動
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+
+</body>
+</html>
